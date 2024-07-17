@@ -25,11 +25,10 @@ public func multiplyColor(_ color: UIColor, by multiplier: CGFloat) -> UIColor {
     color.getRed(&r, green: &g, blue: &b, alpha: &a)
     return UIColor(red: r * multiplier, green: g * multiplier, blue: b * multiplier, alpha: a)
 }
-
-public func + (color1: UIColor, color2: UIColor) -> UIColor {
+public func +(color1: UIColor, color2: UIColor) -> UIColor {
     return addColor(color1, with: color2)
 }
 
-public func * (color: UIColor, multiplier: Double) -> UIColor {
+public func *(color: UIColor, multiplier: Double) -> UIColor {
     return multiplyColor(color, by: CGFloat(multiplier))
 }

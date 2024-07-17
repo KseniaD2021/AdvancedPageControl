@@ -1,12 +1,12 @@
 PODS:
-  - AdvancedPageControl (0.1.1)
-  - Nimble (7.3.4)
-  - Quick (1.2.0)
+  - AdvancedPageControl (0.10.0)
+  - Nimble (12.3.0)
+  - Quick (7.6.1)
 
 DEPENDENCIES:
   - AdvancedPageControl (from `../`)
-  - Nimble (~> 7.0)
-  - Quick (~> 1.2.0)
+  - Nimble (~> 12.0)
+  - Quick (~> 7.0)
 
 SPEC REPOS:
   trunk:
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AdvancedPageControl: e65c54699abb3f49d2270486812735429d0b3875
-  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  AdvancedPageControl: dd1a0cddd1ffe7c6af4727228b3bab80f8a0c047
+  Nimble: f8a8219d16f176429b951e8f7e72df5c23ceddc0
+  Quick: 6c8ab60851c347b645e5d8bf17df20b303276844
 
-PODFILE CHECKSUM: 78d24a092f52e4e59e7c4dce9562af4b90b37895
+PODFILE CHECKSUM: 37decf8edd15c04a7b845b7ed6d258d591f43c2a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.15.2
