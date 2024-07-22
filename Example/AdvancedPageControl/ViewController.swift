@@ -91,5 +91,26 @@ class ViewController: UIViewController,
         pageControl10.drawer = WormDrawer()
         pageControl11.drawer = InfiniteDrawer(numberOfPages: 5, indicatorColor: .white)
         pageControll12.drawer = ScrollingDrawer(numberOfPages: 5)
+
+        pageControl11.drawer = InfiniteDrawer(numberOfPages: 5, indicatorColor: .red)
+        pageControl11.drawer.currentItem = 2
+        pageControl11.setNeedsDisplay()
+
+
+//        [
+//            pageControl1,
+//            pageControl2,
+//            pageControl3,
+//            pageControl4,
+//            pageControl5,
+//            pageControl6,
+//            pageControl7,
+//            pageControl8,
+//            pageControl9,
+//            pageControl10,
+//            pageControll12
+//        ].forEach {
+//            $0?.isHidden = true
+//        }
     }
 }

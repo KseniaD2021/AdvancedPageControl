@@ -102,26 +102,13 @@ public class AdvancedPageControlDrawerParent {
 
     func drawItem(_ rect: CGRect, raduis:CGFloat, color:UIColor, borderWidth:CGFloat = 0, borderColor:UIColor = .clear,index:Int = 0){
 
-        if let layer = layer { // WIP
-//            let path = UIBezierPath(roundedRect:rect, cornerRadius: raduis)
-//            path.lineWidth = borderWidth
-//            borderColor.setStroke()
-//            path.stroke()
-//            color.setFill()
-//            path.fill()
-
+        if let layer = layer {
             if items.contains(index){
                 let currentLayer = layer.sublayers![index]
                                 currentLayer.frame = rect
                                 let maxLine = max(rect.width / 2 ,rect.height/2)
                                 let max = (Int(maxLine > 0 ? maxLine : 1))
                                 let newRadius = min(CGFloat(Int(raduis)),CGFloat(max))
-//                let anim = CABasicAnimation(keyPath: "path")
-//                anim.duration = 0.3
-//                anim.fromValue = (currentLayer as! CAShapeLayer).path
-//                anim.toValue = path.cgPath
-//                currentLayer.add(anim, forKey: "path")
-//                (currentLayer as! CAShapeLayer).path = path.cgPath
                                 currentLayer.cornerRadius = newRadius
                                 currentLayer.borderWidth = borderWidth
                                 currentLayer.backgroundColor = color.cgColor
@@ -134,7 +121,6 @@ public class AdvancedPageControlDrawerParent {
                                 newLayer.borderWidth = borderWidth
                                 newLayer.cornerRadius = raduis
                                 newLayer.borderColor = borderColor.cgColor
-//                newLayer.path = path.cgPath
                                 newLayer.frame = rect
                 layer.addSublayer(newLayer)
             }

@@ -20,7 +20,31 @@ public class InfiniteDrawer:AdvancedPageControlDrawerParentWithIndicator, Advanc
 
     func drawIndicators(_ rect: CGRect) {
         let centeredYPosition = getCenteredYPosition(rect, dotSize: height)
-        for i in 0..<numberOfPages{
+        let halfVisibleDots = visibleDots / 2
+
+        var selectedIndex = Int(currentItem) % numberOfPages
+        if selectedIndex < 0 {
+            selectedIndex += numberOfPages
+        }
+
+        let start = selectedIndex - halfVisibleDots
+        let end = selectedIndex + halfVisibleDots
+
+        for i in start...end {
+            var index = i
+            if index < 0 {
+                index += numberOfPages
+            } else if index >= numberOfPages {
+                index -= numberOfPages
+            }
+
+            let distance = abs(index - selectedIndex)
+
+            let animationRatio = 1 - CGFloat(distance) / CGFloat(halfVisibleDots)
+
+            let centeredX = getCenteredXPosition(rect, itemPos: CGFloat(index), dotSize: width, space: space, numberOfPages: numberOfPages)
+            var y = rect.origin.y + centeredYPosition
+            var x = centeredX + ((width + space) * floor(CGFloat(numberOfPages) / 2)) - (currentItem * (width + space))
             let topTranslate = width
             let progress = currentItem - (floor(currentItem))
             let translate = ( endsDotScale * width) * (currentItem - (floor(currentItem)))
