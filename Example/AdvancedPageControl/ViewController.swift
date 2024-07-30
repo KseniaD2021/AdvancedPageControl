@@ -27,9 +27,11 @@ class ViewController: UIViewController,
     @IBOutlet var pageControl10: AdvancedPageControlView!
     @IBOutlet var pageControl11: AdvancedPageControlView!
     @IBOutlet var pageControll12: AdvancedPageControlView!
-
+    @IBOutlet var pageControll13: AdvancedPageControlView!
+    @IBOutlet var pageControll14: AdvancedPageControlView!
+    
     func numberOfSections(in _: UICollectionView) -> Int {
-        return 5
+        return Constants.pagesCount
     }
 
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
@@ -63,14 +65,16 @@ class ViewController: UIViewController,
         pageControl10.setPage(Int(round(offSet / width)))
         pageControl11.setPage(Int(round(offSet / width)))
         pageControll12.setPage(Int(round(offSet / width)))
+        pageControll13.setPage(Int(round(offSet / width)))
+        pageControll14.setPage(Int(round(offSet / width)))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.layer.cornerRadius = 32
-        pageControl1.drawer = ColorBlendDrawer()
+        pageControl1.drawer = ColorBlendDrawer(numberOfPages: Constants.pagesCount)
         pageControl2.drawer = DropDrawer()
-        pageControl3.drawer = ExtendedDotDrawer(numberOfPages: 3,
+        pageControl3.drawer = ExtendedDotDrawer(numberOfPages: Constants.pagesCount,
                                                 space: 16.0,
                                                 indicatorColor: UIColor.green,
                                                 dotsColor: .gray,
@@ -78,10 +82,11 @@ class ViewController: UIViewController,
                                                 borderWidth: 0.0,
                                                 indicatorBorderColor: .clear,
                                                 indicatorBorderWidth: 0.0)
-        pageControl4.drawer = JumpDrawer()
-        pageControl5.drawer = ScaleDrawer()
-        pageControl6.drawer = SlideDrawer()
-        pageControl7.drawer = SwapDrawer(dotsColor: .clear,
+        pageControl4.drawer = JumpDrawer(numberOfPages: Constants.pagesCount)
+        pageControl5.drawer = ScaleDrawer(numberOfPages: Constants.pagesCount)
+        pageControl6.drawer = SlideDrawer(numberOfPages: Constants.pagesCount)
+        pageControl7.drawer = SwapDrawer(numberOfPages: Constants.pagesCount,
+                                         dotsColor: .clear,
                                          isBordered: true,
                                          borderColor: .white,
                                          borderWidth: 2)
@@ -89,28 +94,23 @@ class ViewController: UIViewController,
         pageControl8.drawer = ThinWormDrawer()
         pageControl9.drawer = ThinWormHeadsDrawer()
         pageControl10.drawer = WormDrawer()
-        pageControl11.drawer = InfiniteDrawer(numberOfPages: 5, indicatorColor: .white)
-        pageControll12.drawer = ScrollingDrawer(numberOfPages: 5)
+        pageControl11.drawer = InfiniteDrawer(numberOfPages: Constants.pagesCount, indicatorColor: .white)
+        pageControll12.drawer = ScrollingDrawer(numberOfPages: Constants.pagesCount)
 
-        pageControl11.drawer = InfiniteDrawer(numberOfPages: 5, indicatorColor: .red)
-        pageControl11.drawer.currentItem = 2
+        pageControl11.drawer = InfiniteDrawer(numberOfPages: Constants.pagesCount, dotsColor: .lightGray)
+        pageControl11.drawer.currentItem = 0
+
+        pageControll13.drawer = DecreasingDrawer(numberOfPages: Constants.pagesCount, dotsColor: .lightGray)
+        pageControll13.drawer.currentItem = 0
+
+        pageControll14.drawer = StaticDrawer(numberOfPages: Constants.pagesCount)
+        pageControll14.drawer.currentItem = 0
+
         pageControl11.setNeedsDisplay()
-
-
-//        [
-//            pageControl1,
-//            pageControl2,
-//            pageControl3,
-//            pageControl4,
-//            pageControl5,
-//            pageControl6,
-//            pageControl7,
-//            pageControl8,
-//            pageControl9,
-//            pageControl10,
-//            pageControll12
-//        ].forEach {
-//            $0?.isHidden = true
-//        }
     }
+
+    private enum Constants {
+        static let pagesCount: Int = 10
+    }
+
 }
