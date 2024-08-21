@@ -50,19 +50,19 @@ public class DecreasingDrawer: AdvancedPageControlDrawerParentWithIndicator, Adv
             yPosition: rect.origin.y + centeredYPosition
         )
 
-        if currentItem <= 1 {
+        if Int(currentItem) <= start + 1 {
             newScaledSize = scaledSize(
                 needScaled: index == last,
                 centerYPos: centeredYPosition,
                 rect: rect
             )
-        } else if (Int(currentItem) >= (start + 1)) && (Int(currentItem) <= (last - 1)) {
+        } else if (Int(currentItem) >= (start + 1)) && (Int(currentItem) < (last - 1)) {
             newScaledSize = scaledSize(
                 needScaled: isFirst || isLast,
                 centerYPos: centeredYPosition,
                 rect: rect
             )
-        } else if (currentItem >= CGFloat(last - 1)) {
+        } else if (Int(currentItem) >= (last - 1)) {
             newScaledSize = scaledSize(
                 needScaled: index == start,
                 centerYPos: centeredYPosition,
